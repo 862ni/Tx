@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>iP quality</title>
+<style>
+:root{--bg1:#0b0b16;--bg2:#1a1030;--card:rgba(255,255,255,.07);--bd:rgba(255,255,255,.12);--tx:#f5f5fb;--mut:#a3a3bd;--a:#7c5cff;--b:#00d4ff;color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme=light]{--bg1:#f4f5fb;--bg2:#e6e9ff;--card:rgba(255,255,255,.85);--bd:rgba(0,0,0,.08);--tx:#17172a;--mut:#62627a;--a:#6a4cff;--b:#00a6d6;color-scheme:light}
+:root[data-theme=sunset]{--bg1:#1c0b14;--bg2:#3a1424;--a:#ff5e62;--b:#ff9966}
+:root[data-theme=ocean]{--bg1:#04161f;--bg2:#08303f;--a:#00b4d8;--b:#4ade80}
+:root[data-theme=gold]{--bg1:#15110a;--bg2:#2a2010;--a:#f5b301;--b:#ff7a18}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed;color:var(--tx);font-family:system-ui,-apple-system,Tahoma,sans-serif;min-height:100vh}
+.wrap{max-width:520px;margin:0 auto;padding:16px 16px 40px}.top{display:flex;align-items:center;justify-content:space-between;margin:6px 0 18px}
+.brand{display:flex;align-items:center;gap:10px;direction:ltr}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;font-weight:800;color:#fff}
+.bn{font-size:22px;font-weight:800;direction:ltr}.bn span{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.dots{display:flex;gap:7px}.dot{width:22px;height:22px;border-radius:50%;border:2px solid transparent}.dot.on{border-color:var(--tx);transform:scale(1.15)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:16px;margin-bottom:14px}
+.step{font-size:15px;font-weight:700;margin-bottom:12px}
+.drop{display:block;border:2px dashed var(--bd);border-radius:16px;padding:24px 10px;text-align:center;color:var(--mut)}.drop input{display:none}
+.seg{display:flex;background:rgba(127,127,160,.15);border-radius:14px;padding:4px;gap:4px}.seg div{flex:1;text-align:center;padding:11px 4px;border-radius:11px;font-weight:600;color:var(--mut)}.seg div.on{background:linear-gradient(135deg,var(--a),var(--b));color:#fff}
+.lb{font-size:13px;color:var(--mut);margin:12px 0 7px}.lb:first-child{margin-top:0}
+video{width:100%;border-radius:14px;background:#000;max-height:46vh;display:block}
+.bar{height:8px;border-radius:6px;background:rgba(127,127,160,.2);overflow:hidden;margin:12px 0 6px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b))}
+.note{font-size:13px;color:var(--mut);line-height:1.7;margin:6px 0}
+.btn{width:100%;padding:15px;border:0;border-radius:16px;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;font-size:17px;font-weight:800;margin-top:10px}.btn.alt{background:rgba(127,127,160,.2);color:var(--tx)}.btn:disabled{opacity:.45}
+input[type=text],input[type=password],select{width:100%;padding:14px;border-radius:14px;border:1px solid var(--bd);background:rgba(127,127,160,.15);color:var(--tx);font-size:16px;margin-top:8px}
+#lock{position:fixed;inset:0;z-index:9;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(160deg,var(--bg1),var(--bg2))}#lock .card{width:100%;max-width:340px;text-align:center}
+#pw{text-align:center;font-size:22px;letter-spacing:6px}.err{color:#ff6b81;height:20px;font-size:14px;margin:8px 0}.hide{display:none!important}
+</style></head><body>
+<div id="lock"><div class="card"><div class="logo" style="margin:0 auto 10px">iP</div><div class="bn">iP <span>quality</span></div>
+<input id="pw" type="password" inputmode="numeric" placeholder="••••••"><div class="err" id="err"></div><button class="btn" id="go" style="margin-top:0">دخول</button></div></div>
+<div class="wrap">
+<div class="top"><div class="brand"><div class="logo">iP</div><div class="bn">iP <span>quality</span></div></div>
+<div class="dots" id="themes"><div class="dot" data-v="dark" style="background:#7c5cff"></div><div class="dot" data-v="light" style="background:#e9ecff"></div><div class="dot" data-v="sunset" style="background:#ff5e62"></div><div class="dot" data-v="ocean" style="background:#00b4d8"></div><div class="dot" data-v="gold" style="background:#f5b301"></div></div></div>
+<div class="card"><div class="step">1) اختر الفيديو</div><label class="drop">📹<br>اضغط لاختيار فيديو<input type="file" id="file" accept="video/*"></label><div class="note" id="fi"></div></div>
+<div class="card"><div class="step">2) الإعدادات</div><div class="lb">الفريمات</div><div class="seg" id="fps"><div data-v="30">30</div><div class="on" data-v="60">60</div><div data-v="120">120</div></div>
+<div class="lb">الدقة</div><div class="seg" id="res"><div class="on" data-v="1080">1080p</div><div data-v="2160">4K</div></div>
+<div class="bar"><i id="pb"></i></div><div class="note" id="st">اختر فيديو للبدء.</div><button class="btn" id="start" disabled>ابدأ إعادة الترميز</button></div>
+<div class="card hide" id="out"><div class="step">✅ جاهز</div><video id="rv" controls playsinline></video>
+<button class="btn" id="save">💾 حفظ الفيديو</button>
+<div class="step" style="margin-top:18px">🚀 Auto Post على تيك توك</div>
+<div class="note" id="tk"></div><button class="btn alt" id="link">ربط حساب تيك توك</button>
+<div id="pf" class="hide"><input type="text" id="ti" placeholder="الوصف / الهاشتاقات"><select id="pv"><option value="SELF_ONLY">خاص (أنا فقط)</option><option value="PUBLIC_TO_EVERYONE">عام</option><option value="MUTUAL_FOLLOW_FRIENDS">الأصدقاء</option></select>
+<button class="btn" id="post">انشر الآن</button></div><div class="note" id="pm"></div></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);let CODE='',jid='',file=null,dur=0,fps=60,res=1080,busy=false;
+const H=()=>({'x-code':CODE});
+function tk(d){$('tk').textContent=d.linked?'الحساب مربوط ✅':(d.configured?'اربط حسابك مرة وحدة (يتصفر إذا السيرفر نام).':'ما تم إعداد مفاتيح تيك توك في السيرفر.');$('link').classList.toggle('hide',d.linked||!d.configured);$('pf').classList.toggle('hide',!d.linked)}
+async function unlock(){try{const r=await fetch('/api/tiktok',{headers:{'x-code':$('pw').value}});if(r.ok){CODE=$('pw').value;$('lock').classList.add('hide');window._tk=await r.json();return}}catch(e){}$('err').textContent='الرمز غلط';$('pw').value=''}
+$('go').onclick=unlock;$('pw').onkeydown=e=>{if(e.key==='Enter')unlock()};
+function setTheme(v){document.documentElement.setAttribute('data-theme',v);document.querySelectorAll('.dot').forEach(c=>c.classList.toggle('on',c.dataset.v===v));try{localStorage.setItem('ipq',v)}catch(e){}}
+let t='dark';try{t=localStorage.getItem('ipq')||'dark'}catch(e){}setTheme(t);document.querySelectorAll('.dot').forEach(c=>c.onclick=()=>setTheme(c.dataset.v));
+function pick(id,cb){document.querySelectorAll('#'+id+' div').forEach(c=>c.onclick=()=>{document.querySelectorAll('#'+id+' div').forEach(x=>x.classList.remove('on'));c.classList.add('on');cb(+c.dataset.v)})}
+pick('fps',v=>fps=v);pick('res',v=>res=v);
+$('file').onchange=e=>{file=e.target.files[0];if(!file)return;const v=document.createElement('video');v.preload='metadata';v.src=URL.createObjectURL(file);v.onloadedmetadata=()=>{dur=v.duration;$('fi').textContent=file.name+' — '+v.videoWidth+'×'+v.videoHeight+' — '+Math.round(dur)+' ثانية';$('start').disabled=false}};
+function fail(m){$('st').textContent=m;busy=false;$('start').disabled=false}
+$('start').onclick=()=>{
+ if(busy||!file)return;busy=true;$('start').disabled=true;$('out').classList.add('hide');$('pb').style.width='0';
+ const fd=new FormData();fd.append('fps',fps);fd.append('res',res);fd.append('dur',dur);fd.append('file',file);
+ const x=new XMLHttpRequest();x.open('POST','/api/encode');x.setRequestHeader('x-code',CODE);
+ x.upload.onprogress=e=>{$('pb').style.width=(e.loaded/e.total*100)+'%';$('st').textContent='جاري رفع الفيديو... '+Math.round(e.loaded/e.total*100)+'%'};
+ x.onerror=()=>fail('فشل الرفع، تأكد من الاتصال.');
+ x.onload=()=>{if(x.status!==200)return fail('رفض السيرفر الملف.');jid=JSON.parse(x.responseText).id;poll()};x.send(fd)};
+function poll(){const iv=setInterval(async()=>{try{const s=await(await fetch('/api/status/'+jid,{headers:H()})).json();
+ $('pb').style.width=s.p+'%';$('st').textContent='جاري الترميز... '+s.p+'%';
+ if(s.st==='done'){clearInterval(iv);$('st').textContent='تم ✅';$('rv').src='/api/download/'+jid+'?inline=1&code='+CODE;$('out').classList.remove('hide');tk(window._tk);busy=false;$('start').disabled=false;fetch('/api/tiktok',{headers:H()}).then(r=>r.json()).then(tk);$('out').scrollIntoView({behavior:'smooth'})}
+ else if(s.st==='error'){clearInterval(iv);fail('فشل الترميز: '+(s.msg||'').slice(-150))}}catch(e){}},1500)}
+$('save').onclick=()=>{const a=document.createElement('a');a.href='/api/download/'+jid+'?code='+CODE;document.body.appendChild(a);a.click();a.remove()};
+$('link').onclick=()=>{location.href='/auth/tiktok?code='+CODE};
+$('post').onclick=async()=>{$('post').disabled=true;$('pm').textContent='جاري الرفع لتيك توك...';
+ try{const r=await fetch('/api/post/'+jid,{method:'POST',headers:{...H(),'Content-Type':'application/json'},body:JSON.stringify({title:$('ti').value,privacy:$('pv').value})});const d=await r.json();
+ $('pm').textContent=d.ok?'تم الإرسال ✅ افتح تيك توك وشيّك على الفيديو.':'خطأ: '+d.error}catch(e){$('pm').textContent='فشل الاتصال.'}$('post').disabled=false};
+</script></body></html>
